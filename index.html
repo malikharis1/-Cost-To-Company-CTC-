@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CTC to In-Hand Salary Calculator India (Accurate & Free)</title>
+
+    <meta
+      name="description"
+      content="Calculate your in-hand salary from CTC instantly. Free CTC to take-home salary calculator for India with PF and tax estimation."
+    />
+
+    <meta
+      name="keywords"
+      content="CTC to in hand salary, CTC to take home salary, salary calculator India, in hand salary calculator, CTC breakup India, monthly in hand salary"
+    />
+
+    <meta name="author" content="Haris Malik" />
+
+    <link rel="canonical" href="https://malikharis.in/" />
+
+    <meta
+      property="og:title"
+      content="CTC to In-Hand Salary Calculator India"
+    />
+    <meta
+      property="og:description"
+      content="Find your exact monthly and yearly in-hand salary from CTC. Simple, fast, and accurate salary calculator for India."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://malikharis.in/" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="CTC to In-Hand Salary Calculator India"
+    />
+    <meta
+      name="twitter:description"
+      content="Instantly calculate your take-home salary from CTC. Designed for Indian salary structures."
+    />
+
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --secondary: #10b981;
+        --light: #f8fafc;
+        --dark: #1e293b;
+        --gray: #64748b;
+        --gray-light: #e2e8f0;
+        --border-radius: 8px;
+        --shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
+
+      body {
+        background-color: #f1f5f9;
+        color: var(--dark);
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+
+      .tagline {
+        font-size: 1.2rem;
+        color: var(--gray);
+        max-width: 600px;
+        margin: 0 auto 20px;
+      }
+
+      .disclaimer {
+        background-color: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        padding: 12px 16px;
+        border-radius: var(--border-radius);
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 0.95rem;
+      }
+
+      .disclaimer i {
+        color: #f59e0b;
+        margin-right: 8px;
+      }
+
+      .calculator-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .input-section,
+      .results-section {
+        flex: 1;
+        min-width: 300px;
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section-title i {
+        color: var(--primary);
+      }
+
+      .input-group {
+        margin-bottom: 25px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .input-with-icon {
+        position: relative;
+      }
+
+      .input-with-icon i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--gray);
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 14px 15px 14px 45px;
+        border: 1px solid var(--gray-light);
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        transition:
+          border 0.3s,
+          box-shadow 0.3s;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      .toggle-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .toggle-option {
+        flex: 1;
+        min-width: 140px;
+      }
+
+      .toggle-option input {
+        display: none;
+      }
+
+      .toggle-label {
+        display: block;
+        padding: 14px 20px;
+        background-color: var(--light);
+        border: 2px solid var(--gray-light);
+        border-radius: var(--border-radius);
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+      }
+
+      .toggle-option input:checked + .toggle-label {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .calculate-btn {
+        width: 100%;
+        padding: 16px;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+      }
+
+      .calculate-btn:hover {
+        background-color: var(--primary-dark);
+      }
+
+      .salary-breakdown {
+        margin-top: 30px;
+      }
+
+      .salary-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--gray-light);
+      }
+
+      .salary-item:last-child {
+        border-bottom: none;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary);
+      }
+
+      .salary-amount {
+        font-weight: 600;
+      }
+
+      .highlight {
+        background-color: #dbeafe;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin-top: 20px;
+        border-left: 4px solid var(--primary);
+      }
+
+      .monthly-yearly-toggle {
+        display: flex;
+        background-color: var(--light);
+        border-radius: var(--border-radius);
+        margin-bottom: 25px;
+        overflow: hidden;
+        border: 1px solid var(--gray-light);
+      }
+
+      .toggle-btn {
+        flex: 1;
+        padding: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+      }
+
+      .toggle-btn.active {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .assumptions {
+        background-color: var(--light);
+        padding: 25px;
+        border-radius: var(--border-radius);
+        margin-top: 40px;
+      }
+
+      .assumptions h3 {
+        margin-bottom: 15px;
+        color: var(--dark);
+      }
+
+      .assumptions ul {
+        list-style-position: inside;
+        color: var(--gray);
+      }
+
+      .assumptions li {
+        margin-bottom: 8px;
+      }
+
+      .note {
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: var(--gray);
+        text-align: center;
+        font-style: italic;
+      }
+
+      .results-section h2 {
+        color: var(--secondary);
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .results-section .subtitle {
+        text-align: center;
+        color: var(--gray);
+        margin-bottom: 30px;
+      }
+
+      .tax-breakdown {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px dashed var(--gray-light);
+      }
+
+      @media (max-width: 768px) {
+        .calculator-container {
+          flex-direction: column;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .input-section,
+        .results-section {
+          padding: 20px;
+        }
+      }
+
+      .loader {
+        display: none;
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .loader i {
+        color: var(--primary);
+        font-size: 1.5rem;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>CTC → In-Hand Salary Calculator</h1>
+        <p class="tagline">
+          Find out how much actually comes to your bank account from your CTC.
+          No more guessing "5 LPA in hand"!
+        </p>
+
+        <div class="disclaimer">
+          <i class="fas fa-exclamation-triangle"></i>
+          <strong>Approximation Calculator:</strong> This tool provides an
+          estimate based on standard Indian deductions. Actual salary may vary
+          based on company policies and individual circumstances.
+        </div>
+      </header>
+
+      <div class="calculator-container">
+        <div class="input-section">
+          <h2 class="section-title">
+            <i class="fas fa-calculator"></i> Enter Your Details
+          </h2>
+
+          <div class="input-group">
+            <label for="ctc">Annual CTC (₹)</label>
+            <div class="input-with-icon">
+              <i class="fas fa-rupee-sign"></i>
+              <input
+                type="number"
+                id="ctc"
+                min="0"
+                step="10000"
+                placeholder="e.g. 500000"
+                value="500000"
+              />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Provident Fund (PF)</label>
+            <div class="toggle-container">
+              <div class="toggle-option">
+                <input type="radio" id="pf-yes" name="pf" value="yes" checked />
+                <label class="toggle-label" for="pf-yes"
+                  >Yes (12% of Basic)</label
+                >
+              </div>
+              <div class="toggle-option">
+                <input type="radio" id="pf-no" name="pf" value="no" />
+                <label class="toggle-label" for="pf-no">No</label>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 8px">
+              Basic salary is assumed as 40% of CTC for PF calculation
+            </p>
+          </div>
+
+          <div class="input-group">
+            <label>Tax Regime</label>
+            <div class="toggle-container">
+              <div class="toggle-option">
+                <input
+                  type="radio"
+                  id="tax-new"
+                  name="tax"
+                  value="new"
+                  checked
+                />
+                <label class="toggle-label" for="tax-new"
+                  >New Regime (Default)</label
+                >
+              </div>
+              <div class="toggle-option">
+                <input type="radio" id="tax-old" name="tax" value="old" />
+                <label class="toggle-label" for="tax-old">Old Regime</label>
+              </div>
+            </div>
+          </div>
+
+          <button class="calculate-btn" id="calculate">
+            <i class="fas fa-calculator"></i> Calculate My In-Hand Salary
+          </button>
+
+          <div class="loader" id="loader">
+            <i class="fas fa-spinner"></i> Calculating...
+          </div>
+
+          <div class="assumptions">
+            <h3>Calculation Assumptions</h3>
+            <ul>
+              <li>Basic Salary = 40% of CTC (for PF calculation)</li>
+              <li>PF = 12% of Basic Salary (if applicable)</li>
+              <li>Employer PF is part of CTC</li>
+              <li>Professional Tax = ₹2,500 per year</li>
+              <li>Standard deductions applied as per selected tax regime</li>
+              <li>No gratuity, bonuses or other special allowances included</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="results-section">
+          <h2 class="section-title">
+            <i class="fas fa-chart-pie"></i> Your Salary Breakdown
+          </h2>
+
+          <div class="monthly-yearly-toggle">
+            <div class="toggle-btn active" id="monthly-view">Monthly</div>
+            <div class="toggle-btn" id="yearly-view">Yearly</div>
+          </div>
+
+          <div id="results-placeholder">
+            <h2>₹0</h2>
+            <p class="subtitle">
+              Your approximate in-hand salary will appear here
+            </p>
+            <p class="note">
+              Enter your CTC and click "Calculate My In-Hand Salary" to see
+              results
+            </p>
+          </div>
+
+          <div id="results-container" style="display: none">
+            <h2 id="final-salary">₹0</h2>
+            <p class="subtitle" id="salary-period">per month</p>
+
+            <div class="salary-breakdown">
+              <div class="salary-item">
+                <span>Gross Salary</span>
+                <span class="salary-amount" id="gross-salary">₹0</span>
+              </div>
+              <div class="salary-item">
+                <span>Provident Fund (PF)</span>
+                <span class="salary-amount" id="pf-deduction">₹0</span>
+              </div>
+              <div class="salary-item">
+                <span>Income Tax</span>
+                <span class="salary-amount" id="income-tax">₹0</span>
+              </div>
+              <div class="salary-item">
+                <span>Professional Tax</span>
+                <span class="salary-amount" id="professional-tax">₹0</span>
+              </div>
+              <div class="salary-item">
+                <span>Other Deductions</span>
+                <span class="salary-amount" id="other-deductions">₹0</span>
+              </div>
+              <div class="salary-item">
+                <span>Net In-Hand Salary</span>
+                <span class="salary-amount" id="net-salary">₹0</span>
+              </div>
+            </div>
+
+            <div class="highlight">
+              <p>
+                <strong>Key Insight:</strong> Your in-hand salary is
+                approximately <span id="percentage-of-ctc">0%</span> of your
+                CTC.
+              </p>
+              <p style="margin-top: 8px; font-size: 0.9rem">
+                This means deductions and taxes account for about
+                <span id="deduction-percentage">0%</span> of your total CTC.
+              </p>
+            </div>
+
+            <div class="tax-breakdown">
+              <h3 class="section-title">
+                <i class="fas fa-file-invoice-dollar"></i> Tax Breakdown
+              </h3>
+              <div class="salary-item">
+                <span>Taxable Income</span>
+                <span class="salary-amount" id="taxable-income">₹0</span>
+              </div>
+              <div class="salary-item">
+                <span
+                  >Tax as per
+                  <span id="tax-regime-label">New Regime</span></span
+                >
+                <span class="salary-amount" id="total-tax">₹0</span>
+              </div>
+              <div class="salary-item">
+                <span>Tax after Rebate (if applicable)</span>
+                <span class="salary-amount" id="tax-after-rebate">₹0</span>
+              </div>
+              <div class="salary-item">
+                <span>Cess (4%)</span>
+                <span class="salary-amount" id="cess">₹0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        <p>
+          This calculator provides estimates based on standard Indian tax laws
+          and common salary structures. For exact calculations, consult with
+          your HR department or a tax professional.
+        </p>
+        <p style="margin-top: 10px">
+          Developed by
+          <a href="https://www.malikharis.in" target="_blank"> Haris Malik </a>
+          — no fluff, just useful.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // DOM Elements
+        const ctcInput = document.getElementById("ctc");
+        const calculateBtn = document.getElementById("calculate");
+        const loader = document.getElementById("loader");
+        const resultsContainer = document.getElementById("results-container");
+        const resultsPlaceholder = document.getElementById(
+          "results-placeholder",
+        );
+        const monthlyViewBtn = document.getElementById("monthly-view");
+        const yearlyViewBtn = document.getElementById("yearly-view");
+
+        // Result display elements
+        const finalSalary = document.getElementById("final-salary");
+        const salaryPeriod = document.getElementById("salary-period");
+        const grossSalary = document.getElementById("gross-salary");
+        const pfDeduction = document.getElementById("pf-deduction");
+        const incomeTax = document.getElementById("income-tax");
+        const professionalTax = document.getElementById("professional-tax");
+        const otherDeductions = document.getElementById("other-deductions");
+        const netSalary = document.getElementById("net-salary");
+        const percentageOfCtc = document.getElementById("percentage-of-ctc");
+        const deductionPercentage = document.getElementById(
+          "deduction-percentage",
+        );
+        const taxableIncome = document.getElementById("taxable-income");
+        const totalTax = document.getElementById("total-tax");
+        const taxAfterRebate = document.getElementById("tax-after-rebate");
+        const cess = document.getElementById("cess");
+        const taxRegimeLabel = document.getElementById("tax-regime-label");
+
+        // State
+        let isMonthlyView = true;
+        let calculationResults = null;
+
+        // Event Listeners
+        calculateBtn.addEventListener("click", calculateSalary);
+        monthlyViewBtn.addEventListener("click", () => toggleView("monthly"));
+        yearlyViewBtn.addEventListener("click", () => toggleView("yearly"));
+
+        // Calculate on page load with default values
+        calculateSalary();
+
+        // Main calculation function
+        function calculateSalary() {
+          // Show loader
+          loader.style.display = "block";
+          calculateBtn.disabled = true;
+
+          // Get user inputs
+          const ctc = parseFloat(ctcInput.value) || 0;
+          const pfApplicable =
+            document.querySelector('input[name="pf"]:checked').value === "yes";
+          const taxRegime = document.querySelector(
+            'input[name="tax"]:checked',
+          ).value;
+
+          // Update tax regime label
+          taxRegimeLabel.textContent =
+            taxRegime === "new" ? "New Regime" : "Old Regime";
+
+          // Simulate calculation delay for better UX
+          setTimeout(() => {
+            // Perform calculations
+            calculationResults = performCalculations(
+              ctc,
+              pfApplicable,
+              taxRegime,
+            );
+
+            // Update UI with results
+            updateResults(calculationResults);
+
+            // Hide loader and show results
+            loader.style.display = "none";
+            calculateBtn.disabled = false;
+            resultsPlaceholder.style.display = "none";
+            resultsContainer.style.display = "block";
+          }, 500);
+        }
+
+        // Perform all calculations
+        function performCalculations(ctc, pfApplicable, taxRegime) {
+          // Step 1: Calculate Basic Salary (40% of CTC)
+          const basicSalary = ctc * 0.4;
+
+          // Step 2: Calculate PF (12% of Basic if applicable)
+          const pfEmployee = pfApplicable ? basicSalary * 0.12 : 0;
+          const pfEmployer = pfApplicable ? basicSalary * 0.12 : 0;
+
+          // Step 3: Calculate Gross Salary (CTC - Employer PF)
+          const grossSalaryAnnual = ctc - pfEmployer;
+
+          // Step 4: Calculate Professional Tax (₹2,500 per year)
+          const professionalTaxAnnual = 2500;
+
+          // Step 5: Calculate Taxable Income
+          let taxableIncomeAnnual = grossSalaryAnnual;
+
+          // Apply standard deduction if old regime
+          if (taxRegime === "old") {
+            taxableIncomeAnnual -= 50000; // Standard deduction
+          }
+
+          // Step 6: Calculate Income Tax based on regime
+          const {
+            tax,
+            taxAfterRebate: finalTax,
+            cess: taxCess,
+          } = calculateIncomeTax(taxableIncomeAnnual, taxRegime);
+
+          // Step 7: Calculate total deductions
+          const totalDeductionsAnnual =
+            pfEmployee + professionalTaxAnnual + finalTax + taxCess;
+
+          // Step 8: Calculate Net Salary (Annual)
+          const netSalaryAnnual = grossSalaryAnnual - totalDeductionsAnnual;
+
+          // Monthly calculations
+          const grossSalaryMonthly = grossSalaryAnnual / 12;
+          const pfEmployeeMonthly = pfEmployee / 12;
+          const professionalTaxMonthly = professionalTaxAnnual / 12;
+          const taxMonthly = (finalTax + taxCess) / 12;
+          const netSalaryMonthly = netSalaryAnnual / 12;
+
+          // Calculate percentages
+          const netToCtcPercentage = ((netSalaryAnnual / ctc) * 100).toFixed(1);
+          const deductionPercentageVal = (
+            100 - parseFloat(netToCtcPercentage)
+          ).toFixed(1);
+
+          return {
+            ctc,
+            pfApplicable,
+            taxRegime,
+            annual: {
+              gross: grossSalaryAnnual,
+              pf: pfEmployee,
+              professionalTax: professionalTaxAnnual,
+              tax: finalTax,
+              cess: taxCess,
+              net: netSalaryAnnual,
+              taxableIncome: taxableIncomeAnnual,
+            },
+            monthly: {
+              gross: grossSalaryMonthly,
+              pf: pfEmployeeMonthly,
+              professionalTax: professionalTaxMonthly,
+              tax: taxMonthly,
+              net: netSalaryMonthly,
+            },
+            percentages: {
+              netToCtc: netToCtcPercentage,
+              deduction: deductionPercentageVal,
+            },
+          };
+        }
+
+        // Calculate income tax based on Indian tax slabs
+        function calculateIncomeTax(taxableIncome, regime) {
+          let tax = 0;
+
+          if (regime === "new") {
+            // New tax regime slabs (FY 2023-24)
+            if (taxableIncome <= 300000) {
+              tax = 0;
+            } else if (taxableIncome <= 600000) {
+              tax = (taxableIncome - 300000) * 0.05;
+            } else if (taxableIncome <= 900000) {
+              tax = 15000 + (taxableIncome - 600000) * 0.1;
+            } else if (taxableIncome <= 1200000) {
+              tax = 45000 + (taxableIncome - 900000) * 0.15;
+            } else if (taxableIncome <= 1500000) {
+              tax = 90000 + (taxableIncome - 1200000) * 0.2;
+            } else {
+              tax = 150000 + (taxableIncome - 1500000) * 0.3;
+            }
+
+            // Rebate under section 87A for new regime
+            if (taxableIncome <= 700000) {
+              tax = 0;
+            }
+          } else {
+            // Old tax regime slabs (FY 2023-24)
+            if (taxableIncome <= 250000) {
+              tax = 0;
+            } else if (taxableIncome <= 500000) {
+              tax = (taxableIncome - 250000) * 0.05;
+            } else if (taxableIncome <= 1000000) {
+              tax = 12500 + (taxableIncome - 500000) * 0.2;
+            } else {
+              tax = 112500 + (taxableIncome - 1000000) * 0.3;
+            }
+
+            // Rebate under section 87A for old regime
+            if (taxableIncome <= 500000) {
+              tax = 0;
+            }
+          }
+
+          // Apply cess (4% on tax)
+          const cess = tax * 0.04;
+          const totalTax = tax + cess;
+
+          // Apply rebate if taxable income is below threshold
+          let taxAfterRebate = totalTax;
+          if (
+            (regime === "new" && taxableIncome <= 700000) ||
+            (regime === "old" && taxableIncome <= 500000)
+          ) {
+            taxAfterRebate = 0;
+          }
+
+          return {
+            tax: tax,
+            taxAfterRebate: taxAfterRebate,
+            cess: cess,
+          };
+        }
+
+        // Update UI with calculation results
+        function updateResults(results) {
+          const data = isMonthlyView ? results.monthly : results.annual;
+          const period = isMonthlyView ? "per month" : "per year";
+
+          // Format currency values
+          const formatCurrency = (amount) => {
+            const formatter = new Intl.NumberFormat("en-IN", {
+              style: "currency",
+              currency: "INR",
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            });
+            return formatter.format(Math.round(amount));
+          };
+
+          // Update all displayed values
+          finalSalary.textContent = formatCurrency(data.net);
+          salaryPeriod.textContent = period;
+          grossSalary.textContent = formatCurrency(data.gross);
+          pfDeduction.textContent = formatCurrency(data.pf);
+          professionalTax.textContent = formatCurrency(data.professionalTax);
+
+          // For monthly view, combine tax and cess
+          if (isMonthlyView) {
+            incomeTax.textContent = formatCurrency(data.tax);
+            otherDeductions.textContent = formatCurrency(0);
+            taxableIncome.textContent = formatCurrency(
+              results.annual.taxableIncome / 12,
+            );
+            totalTax.textContent = formatCurrency(results.annual.tax / 12);
+            taxAfterRebate.textContent = formatCurrency(
+              results.annual.taxAfterRebate / 12,
+            );
+            cess.textContent = formatCurrency(results.annual.cess / 12);
+          } else {
+            incomeTax.textContent = formatCurrency(
+              results.annual.tax + results.annual.cess,
+            );
+            otherDeductions.textContent = formatCurrency(0);
+            taxableIncome.textContent = formatCurrency(
+              results.annual.taxableIncome,
+            );
+            totalTax.textContent = formatCurrency(results.annual.tax);
+            taxAfterRebate.textContent = formatCurrency(
+              results.annual.taxAfterRebate,
+            );
+            cess.textContent = formatCurrency(results.annual.cess);
+          }
+
+          netSalary.textContent = formatCurrency(data.net);
+          percentageOfCtc.textContent = `${results.percentages.netToCtc}%`;
+          deductionPercentage.textContent = `${results.percentages.deduction}%`;
+        }
+
+        // Toggle between monthly and yearly view
+        function toggleView(view) {
+          isMonthlyView = view === "monthly";
+
+          // Update active button
+          if (isMonthlyView) {
+            monthlyViewBtn.classList.add("active");
+            yearlyViewBtn.classList.remove("active");
+          } else {
+            monthlyViewBtn.classList.remove("active");
+            yearlyViewBtn.classList.add("active");
+          }
+
+          // Update results if we have calculation data
+          if (calculationResults) {
+            updateResults(calculationResults);
+          }
+        }
+
+        // Add some sample CTC values for quick testing
+        const sampleCtcValues = [300000, 500000, 800000, 1200000, 2000000];
+        const sampleCtcDescriptions = [
+          "3 LPA",
+          "5 LPA",
+          "8 LPA",
+          "12 LPA",
+          "20 LPA",
+        ];
+
+        // Create sample buttons (optional enhancement)
+        const sampleContainer = document.createElement("div");
+        sampleContainer.style.marginTop = "15px";
+        sampleContainer.style.display = "flex";
+        sampleContainer.style.flexWrap = "wrap";
+        sampleContainer.style.gap = "10px";
+
+        sampleCtcValues.forEach((value, index) => {
+          const button = document.createElement("button");
+          button.textContent = sampleCtcDescriptions[index];
+          button.style.padding = "8px 15px";
+          button.style.border = "1px solid var(--primary)";
+          button.style.borderRadius = "20px";
+          button.style.background = "transparent";
+          button.style.color = "var(--primary)";
+          button.style.cursor = "pointer";
+          button.style.fontSize = "0.9rem";
+          button.style.transition = "all 0.3s";
+
+          button.addEventListener("mouseenter", () => {
+            button.style.background = "var(--primary)";
+            button.style.color = "white";
+          });
+
+          button.addEventListener("mouseleave", () => {
+            button.style.background = "transparent";
+            button.style.color = "var(--primary)";
+          });
+
+          button.addEventListener("click", () => {
+            ctcInput.value = value;
+            calculateSalary();
+          });
+
+          sampleContainer.appendChild(button);
+        });
+
+        // Add sample buttons after the CTC input
+        ctcInput.parentNode.parentNode.appendChild(sampleContainer);
+      });
+    </script>
+  </body>
+</html>
